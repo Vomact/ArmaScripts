@@ -1,0 +1,12 @@
+FN_Task = {
+	waituntil {(!alive X) OR (!alive Y)}; // Wait until one of two objectives has been destroyed
+
+	["TaskName", nil, ["New Long Description", "New Short Description", "New Title"]] remoteExec ["BIS_fnc_setTask"]; // Update Task content
+	
+	waituntil {(!alive X) AND (!alive Y)}; // Wait until both objectives are destroyed
+
+	["TaskName", nil, ["Final Long Decription", "Final Short Description", "Final Title"]] remoteExec ["BIS_fnc_setTask"]; // Update Finished Task content
+	
+	["TaskName", "SUCCEEDED", true] remoteExec ["BIS_fnc_taskSetState"];
+
+};

@@ -1,0 +1,18 @@
+FN_checkTeamInHeli = {
+  _team = remoteExec ["BIS_fnc_listPlayers"];
+  _isInHeli = true;
+  {
+      if(!(_x in heli))then{
+          _isInHeli = false;
+      }
+  }foreach _team;
+  hint format["%1", _isInHeli];
+    _isInHeli
+};
+
+FN_X = {
+    if (call FN_checkTeamInHeli) then
+    {
+    X
+    }
+};

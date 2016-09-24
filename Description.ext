@@ -1,0 +1,52 @@
+author = "XXX"; // Author
+onLoadName = "XXX"; // Mission name
+onLoadMission = "XXX"; // Description
+loadScreen = "XXX.paa"; // Preview picture (.paa format)
+
+// Respawn settings [- https://community.bistudio.com/wiki/Arma_3_Respawn -]
+respawn = "GROUP";
+respawnDelay = 60;
+respawnDialog = 1;
+respawnTemplates[] = {"MenuPosition", "Revive", "EndMission"};
+respawnOnStart = -1;
+
+class Header
+{
+	gameType = Coop; // MP mission type
+};
+
+// Mission Parameters
+class Params
+{
+	class AISkill // AI Difficulty
+	{
+		title = "AI Skill"; // Param name visible in the list
+		values[] = {20,40,60,100}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"Recruit","Regular","Veteran", "Rambo"}; // Description of each selectable item
+		default = 60; // Default value; must be listed in 'values' array, otherwise 0 is used
+               // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+	};
+	
+	class Daytime // Time of day at the start of the mission
+	{
+		title = "Time";
+		texts[] = {"Morning","Day","Evening","Night"};
+		values[] = {6,12,18,0};
+		default = 12;
+		function = "BIS_fnc_paramDaytime"; // (Optional) Function called when player joins, selected value is passed as an argument
+ 		isGlobal = 1; // (Optional) 1 to execute script / function locally for every player who joins, 0 to do it only on server
+	};
+
+};
+
+// Custom sounds/sfx/music added to be used during mission
+class CfgSounds
+{
+	sounds[] = {Briefing}; // Creation of sounds names
+	class Briefing
+	{
+		name = "Briefing"; /// Display name
+		sound[] = {"Kushan_Briefing.ogg", db+3, 1.0}; // Path to .ogg file
+		titles[] = {0,""};
+	};
+};

@@ -1,0 +1,8 @@
+////////////////////////////////
+// Ambient Soldiers Animations
+////////////////////////////////
+
+// Have soldiers do pushups, same order, random time
+
+_blu_pushups = [blu_1, blu_2, blu_3, blu_4, blu_5];
+{_x playMove "AmovPercMstpSnonWnonDnon_exercisePushup"; _x disableAI "ANIM"; sleep (random 2);} forEach _blu_pushups;

@@ -1,0 +1,26 @@
+//////////////////////////////
+// I'm all about that task
+//////////////////////////////
+
+// For all players on the same side, and in the same group : playerGroup = group player;
+
+// Task Creation
+
+Task_X = {
+	[
+	"X",
+	playerGroup,
+	["Long Description", "Short Description", "Title"],
+	(getPos X), // 3D position
+	"ASSIGNED", // State
+	5, // Priority
+	true, //
+	true, //
+	"Map" // Icon type
+	] remoteExec ["BIS_fnc_setTask"];
+};	
+
+// Task Update
+
+	["Briefing", "SUCCEEDED", true] remoteExec ["BIS_fnc_taskSetState"];
+	["Briefing", nil, ["Long Description", "Short Description","Title"]] remoteExec ["BIS_fnc_setTask"]; // Let array empty for unchanged values

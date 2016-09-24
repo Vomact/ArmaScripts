@@ -5,6 +5,8 @@ Call from init.sqf via:
 if (isServer) then {[CURATORMODULENAME,true] execVM "ADV_zeus.sqf";};
 */
 
+// The following goes into the "ADV_zeus.sqf" file
+
 _curator = _this select 0;
 _addCivilians = _this select 1;
 

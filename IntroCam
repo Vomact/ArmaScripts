@@ -1,0 +1,29 @@
+//////////////////////////////////////////
+// Basic Moving Camera Intro
+//////////////////////////////////////////
+
+_cam = "camera" camCreate [4335.69,5255.68,60]; // Set Creation Position
+_cam cameraEffect ["internal", "BACK"]; // That's 100% basic
+CutText ["","Black Faded"]; // No text, just a black screen
+
+showcinemaBorder true; // 16:9 black borders
+
+sleep 0.5;
+titleText ["Custom mission made by Vomact", "PLAIN", 0.2];
+sleep 3;
+titleText ["Make sure to read the 'Misc' journal entry !", "PLAIN", 0.25];
+sleep 3;
+titleText ["Have fun, and share it if you like it !", "PLAIN", 0.2];
+CutText ["","Black Faded"];
+sleep 3;
+CutText ["","Black in", 0];
+
+_cam camPrepareTarget player; // Target of the camera
+_cam camPreparePos [3222.99,5812.6,1.5]; // Destination of the camera
+_cam camPrepareFOV 0.700; // FOV of the camera
+_cam camCommitPrepared 12; // Time for the camera to reach its destination
+
+sleep 12;
+
+_cam CameraEffect ["Terminate","back"]; // Setup for destroying the cam
+CamDestroy _cam;

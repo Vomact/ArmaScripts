@@ -1,0 +1,21 @@
+// Random Building Position Script v1.0 by Tophe of Östgöta Ops
+
+// Just add   [this] exec "buildingPos.sqs"   to the init field of any 
+// unit and place it close to the house you want him to be in.
+
+
+
+
+_unit = _this select 0
+_house = nearestbuilding (_this select 0)
+_x = 0;
+
+while { format ["%1", _house buildingPos _x] != "[0,0,0]" } do {_x = _x + 1};
+
+
+// unrem this line if you want to know the number of positions avaiable
+// hint format ["%2: 0 - %1", _x-1, "Available positions"];
+
+
+_x = _x - 1;
+_unit setPos (_house buildingpos (random _x)); 

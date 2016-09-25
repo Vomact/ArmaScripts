@@ -1,0 +1,8 @@
+FN_INIT = {
+	_groups = [];
+	for "_i" from 1 to 2 do {
+		_grp = missionNamespace getvariable (format ["toto_%1", _i]);
+		[_grp, position (leader _grp), 250] call bis_fnc_taskPatrol;
+	};
+};
+call FN_INIT;

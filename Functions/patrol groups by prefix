@@ -1,0 +1,12 @@
+fn_patrolGroupsByPrefix = {
+	_i = 1;
+	_prefix = _this select 0;
+	_distance = _this select 1;
+	While{!isNil (format ["%1_%2", _prefix,_i])}do
+	{
+		_grp = missionNamespace getvariable (format ["%1_%2", _prefix,_i]);
+		[_grp, position (leader _grp), _distance] call bis_fnc_taskPatrol;
+		_i = _i +1;
+	}
+};
+["toto",50] call fn_patrolGroupsByPrefix;

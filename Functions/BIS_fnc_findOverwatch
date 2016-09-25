@@ -1,3 +1,18 @@
+/*
+	File: fn_findOverwatch.sqf
+	Author: Dean "Rocket" Hall
+
+	Description:
+	Function which selects a position that provides overwatch
+	onto another position.
+
+	Parameter(s):
+	_this select 0: the target position (position)
+	_this select 1: maximum distance from target in meters (optional)
+	_this select 2: minimum distance from target in meters (optional)
+	_this select 3: minimum height in relation to target in meters (optional)
+	_this select 4: position to start looking from, if different from target pos (optional)
+*/
 private["_setHeight","_targetPos","_refObj","_maxrange","_minrange","_minheight","_centerPos","_selectedPositions","_result","_attempts","_scan","_checkPos","_height","_dis","_terrainBlocked"];
 
 //Initialize

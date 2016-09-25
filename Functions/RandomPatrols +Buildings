@@ -28,11 +28,11 @@ Random initial patrol direction - I noticed every patrol started off in the same
 Fixed the 2D position / findSafePos errors
 Added building positions as possible patrol locations using Random Building Position Script v1.0 by Tophe of Östgöta Ops
 
-[B][COLOR="blue"]ArmaIIholic 
+ArmaIIholic 
 -- added part of JTD direction normalization function
 -- changed numbers for waypoints to match previous waypoints
 -- randomized initial direction -- Wolffy.au added only the offset which had to be reduced to 180 
-           - however this script is making full circle from wherever it starts[/COLOR][/B]
+           - however this script is making full circle from wherever it starts
 
 =======================================================================================================================
 */
@@ -64,16 +64,16 @@ Added building positions as possible patrol locations using Random Building Posi
 	_slack = _max_dist / 5.5;
 	if ( _slack < 20 ) then { _slack = 20 };
 
-	[B][COLOR="Blue"]_setdir = round (random 1);
+	_setdir = round (random 1);
 
-	_angle_offset = random 180;[/COLOR][/B]
+	_angle_offset = random 180;
 	while {count _wp_array < _wp_count} do 
 	{
 		private ["_x1","_y1","_wp_pos", "_prepos","_bldgpos","_bldgs"];
 		
 		_newangle = (count _wp_array * _angle) + _angle_offset;
 		
-		[B][COLOR="blue"]if ((_newangle > 360) || (_newangle < 0)) then
+		if ((_newangle > 360) || (_newangle < 0)) then
 		{
 			_newangle = abs (abs (_newangle) - 360);
 		};
@@ -86,8 +86,8 @@ Added building positions as possible patrol locations using Random Building Posi
 			 {
 				_newangle = abs (abs (_newangle) - 360);
 			 };
-		};[/COLOR][/B]
-
+		};
+		
 		_x1 = _center_x - (sin _newangle * _max_dist);
 		_y1 = _center_y - (cos _newangle * _max_dist);
 
@@ -123,7 +123,7 @@ Added building positions as possible patrol locations using Random Building Posi
 
 	sleep 1;
 
-	[B][COLOR="blue"]_j = count (waypoints _grp);[/COLOR][/B]
+	_j = count (waypoints _grp);
 
 	for "_i" from 1 to (_wp_count - 1) do
 	{
@@ -137,9 +137,9 @@ Added building positions as possible patrol locations using Random Building Posi
 		_wp = _grp addWaypoint [_cur_pos, 0];
 		_wp setWaypointType "MOVE";
 		_wp setWaypointCompletionRadius (5 + _slack);
-		[B][COLOR="blue"][_grp,_j+i][/COLOR][/B] setWaypointTimeout [0, 2, 16];
+		[_grp,_j+i] setWaypointTimeout [0, 2, 16];
 		// When completing waypoint have 33% chance to choose a random next wp
-		[B][COLOR="blue"][_grp,_j+i][/COLOR][/B] setWaypointStatements ["true", "if ((random 3) > 2) then { group this setCurrentWaypoint [(group this), (floor (random (count (waypoints (group this)))))];};"];
+		[_grp,_j+i] setWaypointStatements ["true", "if ((random 3) > 2) then { group this setCurrentWaypoint [(group this), (floor (random (count (waypoints (group this)))))];};"];
 		
 		if (_debug > 0) then {
 			_marker_name = str(_wp_array select _i);

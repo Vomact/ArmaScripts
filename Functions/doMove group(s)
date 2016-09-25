@@ -1,0 +1,18 @@
+fn_doMoveGroups = {
+	{
+		{
+			(_x) doMove (position (_this select 1));
+		}foreach (units (_x));
+	}foreach (_this select 0);
+};
+
+fn_doMoveGroup = {
+	{
+		(_x) doMove (position (_this select 1))
+	}foreach (units (_this select 0));
+};
+
+
+[toto_1, boat_1] call fn_doMoveGroup;
+
+[[toto_2, toto_3], boat_1] call fn_doMoveGroups;
